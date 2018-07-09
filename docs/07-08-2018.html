@@ -1,0 +1,278 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Javascript's Generating Functions · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Today I Learned
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="07-08-2018.html">
+            
+                <a href="07-08-2018.html">
+            
+                    
+                    Javascript's Generating Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Javascript's Generating Functions</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="today-i-learned">Today I Learned</h1>
+<h4 id="javascripts-generators">Javascript&apos;s Generators</h4>
+<h6 id="july-8th-2018"><em>July 8th, 2018</em></h6>
+<p>So my reaction when I first saw something like this:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">pleaseSurrender</span>(<span class="hljs-params"></span>) </span>{
+   <span class="hljs-keyword">yield</span> <span class="hljs-string">&quot;Never!&quot;</span>;
+}
+</code></pre>
+<p><em>Wait, an asterisk in a function definition? Javascript doesn&apos;t have C-style pointers, right? Because that&apos;s the only place I&apos;ve ever seen something like that before.</em></p>
+<p>But nope. The asterisk is used to define generator functions. Two things that leapt out to me about them right off the bat:</p>
+<ul>
+<li>Calling the function returns a sort of iterator that iterates through the yield statements.</li>
+<li>The context is saved as you go through.</li>
+</ul>
+<p>An example to make things a little more clear:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span>* <span class="hljs-title">doctorSeuss</span>(<span class="hljs-params"></span>) </span>{
+   <span class="hljs-keyword">var</span> poem = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;red&quot;</span>, <span class="hljs-string">&quot;blue&quot;</span>];
+   <span class="hljs-keyword">yield</span> poem.shift();
+   <span class="hljs-keyword">yield</span> poem.shift();
+   <span class="hljs-keyword">yield</span> poem.shift();
+   <span class="hljs-keyword">yield</span> poem.shift();
+}
+
+<span class="hljs-keyword">const</span> poet = doctorSeuss();
+<span class="hljs-built_in">console</span>.log(poet.next().value + <span class="hljs-string">&quot; fish&quot;</span>); <span class="hljs-comment">// 1 fish</span>
+<span class="hljs-built_in">console</span>.log(poet.next().value + <span class="hljs-string">&quot; fish&quot;</span>); <span class="hljs-comment">// 2 fish</span>
+<span class="hljs-built_in">console</span>.log(poet.next().value + <span class="hljs-string">&quot; fish&quot;</span>); <span class="hljs-comment">// red fish</span>
+<span class="hljs-built_in">console</span>.log(poet.next().value + <span class="hljs-string">&quot; fish&quot;</span>); <span class="hljs-comment">// blue fish</span>
+</code></pre>
+<p>Every call of <code>poet.next()</code> executes the body of the <code>doctorSeuss</code> function until the next yield expression. The <code>shift()</code> call returns the first element and pops it from the array. As you can see, the poem array is being modified, and its value persists as we iterate through the generator. </p>
+<p>I&apos;m also calling <code>poet.next().value</code> instead of <code>poet.next()</code>.  Why?</p>
+<p><img src="../assets/07-08-2018.png" width="450"></p>
+<p>As you can see, calling the <code>next()</code> method on a generator returns an object with two fields: <code>value</code> and <code>done</code>. The <code>value</code> field contains the result of the yield expression, while the <code>done</code> field shows whether or not there are yield statements to iterate to. At the first call of <code>generator.next()</code>, there was a yield expression to iterate to, so it is not &quot;done&quot; and it does have a value. After a second call, there are not more yield expressions to iterate to, so it is &quot;done&quot;, and its return object&apos;s value field is set to undefined.</p>
+<h4 id="resources-for-future-reference">Resources for future reference</h4>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*" target="_blank">More examples</a></li>
+<li><a href="https://medium.com/javascript-scene/the-hidden-power-of-es6-generators-observable-async-flow-control-cfa4c7f31435" target="_blank">More about applications for async</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Today I Learned">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Javascript's Generating Functions","level":"1.2","depth":1,"previous":{"title":"Today I Learned","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/07-08-2018.md","mtime":"2018-07-09T06:45:55.063Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-09T06:21:49.056Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
