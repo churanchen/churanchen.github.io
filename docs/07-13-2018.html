@@ -191,7 +191,7 @@ PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin
 echo &apos;&apos;
 fortune | cowsay | lolcat
 </code></pre>
-<p>This sets up the correct PATH environment variable, and prints a newline before we output the colourful, insightful talking cow to the terminal.
+<p>This sets up the correct PATH environment variable, and prints a newline before we output the colourful, insightful, talking cow to the terminal (the PATH variable depends on your operating system).
 In any case, now I&apos;m ready to set up the cron job.</p>
 <p><code>$ crontab -e</code></p>
 <p>My cron tab looks like this:</p>
@@ -204,7 +204,9 @@ In any case, now I&apos;m ready to set up the cron job.</p>
 <p>So my job runs:</p>
 <pre><code>0 10,13 * * 1-5
 &lt;On the hour&gt; &lt;10am, 1pm&gt; &lt;Every day of the month&gt; &lt;Every month&gt; &lt;Mon-Fri&gt;
-</code></pre><p>Cool! That&apos;s it! Now I can get my daily dose of cronfee in the morning (cronfee, get it? I&apos;ll see myself out).</p>
+</code></pre><p>I can check on my cron jobs with this:</p>
+<p><code>$ crontab -l</code></p>
+<p>Cool! That&apos;s it! Now I can get my daily dose of cronfee in the morning (cronfee, get it? I&apos;ll see myself out).</p>
 <p><em>Endnote: This simple job took a non-trivial chunk of a evening to set up. Mainly because the PATH variable wasn&apos;t set up correctly, so I kept getting errors (hence the wrapper script). Don&apos;t know how sysadmins do it.</em></p>
 <h4 id="resources-for-future-reference">Resources for future reference</h4>
 <ul>
@@ -255,7 +257,7 @@ In any case, now I&apos;m ready to set up the cron job.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Morning Cup of Cron","level":"1.2","depth":1,"next":{"title":"Javascript's Generating Functions","level":"1.3","depth":1,"path":"docs/07-08-2018.md","ref":"docs/07-08-2018.md","articles":[]},"previous":{"title":"Today I Learned","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/07-13-2018.md","mtime":"2018-07-13T19:26:10.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-13T19:26:18.701Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Morning Cup of Cron","level":"1.2","depth":1,"next":{"title":"Javascript's Generating Functions","level":"1.3","depth":1,"path":"docs/07-08-2018.md","ref":"docs/07-08-2018.md","articles":[]},"previous":{"title":"Today I Learned","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/07-13-2018.md","mtime":"2018-07-13T20:09:19.057Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-13T20:10:59.678Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
