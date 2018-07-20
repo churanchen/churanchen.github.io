@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Morning Cup of Cron · GitBook</title>
+        <title>DeViloping · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="07-08-2018.html" />
+    <link rel="next" href="07-13-2018.html" />
     
     
-    <link rel="prev" href="07-19-2018.html" />
+    <link rel="prev" href="../" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="07-19-2018.html">
+        <li class="chapter active" data-level="1.2" data-path="07-19-2018.html">
             
                 <a href="07-19-2018.html">
             
@@ -115,7 +115,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="07-13-2018.html">
+        <li class="chapter " data-level="1.3" data-path="07-13-2018.html">
             
                 <a href="07-13-2018.html">
             
@@ -171,7 +171,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Morning Cup of Cron</a>
+        <a href=".." >DeViloping</a>
     </h1>
 </div>
 
@@ -187,45 +187,28 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="today-i-learned">Today I Learned</h1>
-<h4 id="morning-cup-of-cron">Morning Cup of Cron</h4>
-<h6 id="july-13th-2018"><em>July 13th, 2018</em></h6>
-<p><em>Note: I set this up on MacOS.</em></p>
-<p>I don&apos;t drink coffee. Which can be unfortunate, because I can be quite down and unmotivated in the morning. It would be great if I had something to perk me up in the mornings.</p>
-<p>One of my favourite commands:</p>
-<p><img src="../assets/07-13-2018.gif" width="650"></p>
-<p><em>Shoutout to <a href="https://github.com/icholy/ttygif" target="_blank">ttygif</a> (what I used to record my terminal and convert it to a gif)</em></p>
-<p>Pretty wacky. But it definitely perks me up. I want this command to run in the mornings, and after lunch, since those are the times I&apos;m most prone to being tired at work. So I&apos;m going to create a cron job to do it.</p>
-<p>What is cron? Tell me, <a href="https://en.wikipedia.org/wiki/Cron" target="_blank">Wikipedia</a>:</p>
-<p><code>The software utility cron is a time-based job scheduler in Unix-like computer operating systems. People who set up and maintain software environments use cron to schedule jobs (commands or shell scripts) to run periodically at fixed times, dates, or intervals.</code></p>
-<p>Cool. First I&apos;m going to write a wrapper script called CheerUp.sh.</p>
-<pre><code class="lang-shell">#!/bin/sh
-PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
-echo &apos;&apos;
-fortune | cowsay | lolcat
-</code></pre>
-<p>This sets up the correct PATH environment variable, and prints a newline before we output the colourful, insightful, talking cow to the terminal (the PATH variable depends on your operating system).
-In any case, now I&apos;m ready to set up the cron job.</p>
-<p><code>$ crontab -e</code></p>
-<p>My cron tab looks like this:</p>
-<pre><code>MAILTO=&quot;&quot;
-
-0 10,13 * * 1-5  /Users/churanchen/Coding/resources/CheerUp.sh &gt; /dev/ttys003
-</code></pre><p>The <code>MAILTO=&quot;&quot;</code> is necessary, because otherwise the operating system tries to send me emails, which I don&apos;t want. The command <code>/Users/churanchen/Coding/resources/CheerUp.sh &gt; /dev/ttys003</code> runs my script and directs the output to the terminal.</p>
-<p>The cron time syntax works like:</p>
-<p><code>&lt;Minute&gt; &lt;Hour&gt; &lt;Day_of_the_Month&gt; &lt;Month_of_the_Year&gt; &lt;Day_of_the_Week&gt;</code></p>
-<p>So my job runs:</p>
-<pre><code>0 10,13 * * 1-5
-&lt;On the hour&gt; &lt;10am, 1pm&gt; &lt;Every day of the month&gt; &lt;Every month&gt; &lt;Mon-Fri&gt;
-</code></pre><p>I can check on my cron jobs with this:</p>
-<p><code>$ crontab -l</code></p>
-<p>Cool! That&apos;s it! Now I can get my daily dose of cronfee in the morning (cronfee, get it? I&apos;ll see myself out).</p>
-<p><em>Endnote: This simple job took a non-trivial chunk of a evening to set up. Mainly because the PATH variable wasn&apos;t set up correctly, so I kept getting errors (hence the wrapper script). Don&apos;t know how sysadmins do this.</em></p>
+<h4 id="deviloping">DeViloping</h4>
+<h6 id="july-19th-2018"><em>July 19th, 2018</em></h6>
+<p>I&apos;ll call my Vim skills subpar and leave it at that. In fact, I would say that about my keyboard shortcut skills in general. When I see a programming keyboard ninja fly through lines of code without so much as glancing at their mouse, I feel like I&apos;m witnessing magic.</p>
+<p>This doesn&apos;t mean I can&apos;t use Vim at all. When you&apos;re trying to edit a nginx.conf file on a t2.micro EC2 instance, installing Sublime isn&apos;t exactly an option. Still, it&apos;s slightly embarrassing having someone over your shoulder watching you hold down to backspace key for three minutes.</p>
+<p>So I&apos;m going to try some more Vim, a few shortcuts at a time.</p>
+<p>Keys act normally in &quot;INSERT&quot; mode (press the &quot;i&quot; key). Most of the useful new shortcuts I&apos;m going to learn are in the normal mode (press the &quot;esc&quot; key).</p>
+<p>Today&apos;s commands:</p>
+<ul>
+<li>j moves one character left</li>
+<li>l moves one character right</li>
+<li>k moves one line up</li>
+<li>j moves one line down</li>
+<li>w moves one word forward, 3w moves 3 words forward</li>
+<li>b moves one word backward, 3b moves 3 words backward</li>
+<li>0 moves to the front of the line</li>
+<li>$ moves to the end of the line</li>
+<li>gg moves to the first line</li>
+<li>G moves to the last line</li>
+</ul>
 <h4 id="resources-for-future-reference">Resources for future reference</h4>
 <ul>
-<li><a href="https://crontab.guru/" target="_blank">If I&apos;m too lazy to learn more cron time syntax</a></li>
-<li><a href="https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx.html" target="_blank">Guide for setting up jobs on MacOS</a></li>
-<li><a href="http://www.unixgeeks.org/security/newbie/unix/cron-1.html" target="_blank">More info for cron on Linux</a></li>
+<li><a href="https://www.openvim.com/" target="_blank">A game-tutorial for learning Vim</a></li>
 </ul>
 
                                 
@@ -254,12 +237,12 @@ In any case, now I&apos;m ready to set up the cron job.</p>
 
             
                 
-                <a href="07-19-2018.html" class="navigation navigation-prev " aria-label="Previous page: DeViloping">
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Today I Learned">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="07-08-2018.html" class="navigation navigation-next " aria-label="Next page: Javascript's Generating Functions">
+                <a href="07-13-2018.html" class="navigation navigation-next " aria-label="Next page: Morning Cup of Cron">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -270,7 +253,7 @@ In any case, now I&apos;m ready to set up the cron job.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Morning Cup of Cron","level":"1.3","depth":1,"next":{"title":"Javascript's Generating Functions","level":"1.4","depth":1,"path":"docs/07-08-2018.md","ref":"docs/07-08-2018.md","articles":[]},"previous":{"title":"DeViloping","level":"1.2","depth":1,"path":"docs/07-19-2018.md","ref":"docs/07-19-2018.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/07-13-2018.md","mtime":"2018-07-19T18:42:01.122Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-20T04:25:27.250Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"DeViloping","level":"1.2","depth":1,"next":{"title":"Morning Cup of Cron","level":"1.3","depth":1,"path":"docs/07-13-2018.md","ref":"docs/07-13-2018.md","articles":[]},"previous":{"title":"Today I Learned","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"docs/07-19-2018.md","mtime":"2018-07-20T04:25:05.261Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-07-20T04:25:27.250Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -2,7 +2,7 @@
 
 #### About This Page
 
-It seems the more programming I'm exposed to, the more I realize there's left to learn. This page documents my efforts to become slightly less of an ignoramus.
+It seems the more programming I'm exposed to, the more I realize there's left to learn. This page documents my efforts to become slightly less of an ignoramus. I genuinely am learning while I post, so I'm the furthest from being an expert on anything here.
 
 #### About Me
 
